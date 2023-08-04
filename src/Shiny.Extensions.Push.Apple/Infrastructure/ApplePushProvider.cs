@@ -37,7 +37,7 @@ public class ApplePushProvider : IPushProvider
 
     public async Task<bool> Send(INotification notification, PushRegistration registration, CancellationToken cancellationToken)
     {
-        var path = $"/v3/device/{registration.DeviceToken}";
+        var path = $"/3/device/{registration.DeviceToken}";
         var url = (this.config.IsProduction ? ProdUrl : DevUrl) + path;
 
         var native = await this.CreateNativeNotification(registration, notification);
