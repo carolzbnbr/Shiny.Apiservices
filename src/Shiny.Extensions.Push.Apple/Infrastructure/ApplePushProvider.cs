@@ -11,7 +11,7 @@ namespace Shiny.Extensions.Push.Apple.Infrastructure;
 
 public class ApplePushProvider : IPushProvider
 {
-    const string DevUrl = "https://api.development.push.apple.com";
+    const string DevUrl = "https://api.sandbox.push.apple.com";
     const string ProdUrl = "https://api.push.apple.com";
 
     readonly AppleConfiguration config;
