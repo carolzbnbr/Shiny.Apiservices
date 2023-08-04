@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-        <MicrosoftExtensionsVersion>7.0.0</MicrosoftExtensionsVersion>
+        <TargetFrameworks>net6.0</TargetFrameworks>
+        <MicrosoftExtensionsVersion>6.0.0</MicrosoftExtensionsVersion>
         <Authors>Allan Ritchie</Authors>
         <Owners>aritchie;shinylib</Owners>
         <LangVersion>latest</LangVersion>
