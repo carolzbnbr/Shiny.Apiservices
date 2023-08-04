@@ -41,7 +41,7 @@ public class ApplePushProvider : IPushProvider
         var url = (this.config.IsProduction ? ProdUrl : DevUrl) + path;
 
         var native = await this.CreateNativeNotification(registration, notification);
-        var json = Serializer.Serialize(new AppleNotification { });
+        var json = Serializer.Serialize(native);
 
         var request = new HttpRequestMessage(HttpMethod.Post, new Uri(url))
         {
@@ -52,8 +52,8 @@ public class ApplePushProvider : IPushProvider
         var jwt = this.GetAuthToken(this.config);
 
         request.Headers.Authorization = new AuthenticationHeaderValue("bearer", jwt);
-        request.Headers.TryAddWithoutValidation(":method", "POST");
-        request.Headers.TryAddWithoutValidation(":path", path);
+        // request.Headers.TryAddWithoutValidation(":method", "POST");
+        // request.Headers.TryAddWithoutValidation(":path", path);
         request.Headers.TryAddWithoutValidation("apns-id", native.ApnsId ?? Guid.NewGuid().ToString("D"));
         request.Headers.TryAddWithoutValidation("apns-topic", this.GetApnsTopic(this.config.AppBundleIdentifier, native));
         request.Headers.TryAddWithoutValidation("apns-expiration", Convert.ToString(native.ExpirationFromEpoch ?? 0));
